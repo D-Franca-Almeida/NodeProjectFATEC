@@ -1,26 +1,27 @@
-const express = require('express'); 
-const exphbs = require('express-handlebars'); 
-const bodyParser = require('body-parser'); 
-const tarefasController = require('./controllers/tarefasController'); 
- 
-const app = express(); 
-app.engine('handlebars', exphbs.engine({ 
-    defaultLayout: 'layout', // Define layout padrão como "layout.handlebars"
-    layoutsDir: __dirname + '/views/' // Ajusta o diretório de layouts 
-})); 
-app.set('view engine', 'handlebars'); 
-app.use(bodyParser.urlencoded({ extended: true })); 
-app.use(express.static('public')); 
- 
-// Rotas 
-app.get('/', tarefasController.exibirLista); 
-app.get('/tarefas/adicionar', tarefasController.exibirAdicionarTarefa); 
-app.post('/tarefas', tarefasController.adicionarTarefa); 
-app.get('/tarefas/:id/editar', tarefasController.exibirEdicao); 
-app.post('/tarefas/:id/editar', tarefasController.editarTarefa); 
-app.get('/tarefas/:id/excluir', tarefasController.excluirTarefa); 
- 
-// Iniciar o servidor 
-app.listen(3000, () => { 
-    console.log("Servidor rodando em http://localhost:3000"); 
-});     
+const express = require('express');
+const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
+const produtosController = require('./controllers/produtosController');
+
+
+const app = express();
+app.engine('handlebars', exphbs.engine({
+    defaultLayout: 'layout',
+    layoutsDir: __dirname + '/views/'
+}));
+app.set('view engine', 'handlebars');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
+// Rotas
+app.get('/', produtosController.exibirLista);
+app.get('/produtos/adicionar', produtosController.exibirAdicionarProduto);
+app.post('/produtos', produtosController.adicionarProduto);
+app.get('/produtos/:id/editar', produtosController.exibirEdicao);
+app.post('/produtos/:id/editar', produtosController.editarProduto);
+app.get('/produtos/:id/excluir', produtosController.excluirProduto);
+
+
+app.listen(3000, () => {
+    console.log("Servidor rodando em http://localhost:3000");
+});

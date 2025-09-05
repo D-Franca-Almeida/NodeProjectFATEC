@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>Lista de Produtos</h1>
+    <a href="/produtos/adicionar" class="btn">Adicionar Produto</a>
+    <ul>
+        {{#each produtos}}
+            <li>
+                {{nome}} - Qtd: {{quantidade}} - R$ {{preco}}
+                <a href="/produtos/{{id}}/editar">Editar</a>
+                <a href="/produtos/{{id}}/excluir">Excluir</a>
+            </li>
+        {{/each}}
+    </ul>
+</div>
